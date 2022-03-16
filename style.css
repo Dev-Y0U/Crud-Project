@@ -1,0 +1,48 @@
+/* start Global Rules */
+:root{
+    --main-color:#ffffff;
+    --background:#222222;
+    --text-color:#ffffff;
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+	padding: 0 15px;
+	margin: 0 auto;
+	
+}
+/* small screens*/
+@media (min-width: 768px) {
+	.container {
+		width: 750px;
+	}
+}
+/* medium screens*/
+@media (min-width: 992px) {
+	.container {
+		width: 970px;
+	}
+}
+/* Large screens*/
+@media (min-width: 1200px) {
+	.container {
+		width: 1170px;
+	}
+}
+/* end Global Rules */
+body{
+    background:var(--background);
+    color:var(--text-color);
+    font-family: sans-serif;
+}
+.crud{
+    display:flex;
+    justify-content: center;
+}
+.head{
+    text-align: center;
+    margin:20px 0;
+}
