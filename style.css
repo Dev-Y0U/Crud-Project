@@ -1,8 +1,9 @@
 /* start Global Rules */
 :root{
-    --main-color:#ffffff;
-    --background:#222222;
+    --main-dark-color:hsl(261, 63%, 53%);
+    --background-dark-color:hsl(263, 38%, 10%);
     --text-color:#ffffff;
+    --inputs-dark-color:hsl(263, 60%, 5%);
 }
 *{
     margin:0;
@@ -34,7 +35,7 @@
 }
 /* end Global Rules */
 body{
-    background:var(--background);
+    background:var(--background-dark-color);
     color:var(--text-color);
     font-family: sans-serif;
 }
@@ -45,4 +46,58 @@ body{
 .head{
     text-align: center;
     margin:20px 0;
+}
+/* start inputs styling */
+.inputs div{
+    margin:10px 0;
+}
+input{
+    width:100%;
+    height: 30px;
+    outline: none;
+    border:none;
+    border-radius: 5px;
+    margin:4px 0;
+    padding: 10px;
+    text-align:center;
+    background:var(--inputs-dark-color) ;
+    color:var(--text-color);
+    caret-color:var(--main-dark-color);
+    transition: .3s ease-in-out;
+}
+input:focus{
+    background: var(--main-dark-color);
+    transform:scale(1.01);
+}
+.pricing input{
+    width:20%;
+}
+#total{
+    display: inline-block;
+    padding:3px 10px ;
+    background:var(--inputs-dark-color);
+    border:1px solid white;
+    border-radius:5px;
+}
+#total::before{
+    content:"Total:";
+}
+.inline input{
+    width:49%;
+}
+button{
+    height: 30px;
+    width:100%;
+    background:var(--main-dark-color);
+    border:3px solid black;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:.3s;
+}
+button:hover{
+    color:var(--text-color);
+    border:3px solid var(--main-dark-color);
+    background:transparent;
+    letter-spacing: 5px;
 }
