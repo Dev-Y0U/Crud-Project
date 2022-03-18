@@ -48,16 +48,13 @@ body{
     margin:20px 0;
 }
 /* start inputs styling */
-.inputs div{
-    margin:10px 0;
-}
 input{
     width:100%;
     height: 30px;
     outline: none;
     border:none;
     border-radius: 5px;
-    margin:4px 0;
+    margin:5px 0;
     padding: 10px;
     text-align:center;
     background:var(--inputs-dark-color) ;
@@ -88,6 +85,7 @@ input:focus{
 button{
     height: 30px;
     width:100%;
+    padding:0 10px ;
     background:var(--main-dark-color);
     border:3px solid black;
     border-radius: 5px;
@@ -95,9 +93,38 @@ button{
     cursor: pointer;
     transition:.3s;
 }
+.inputs button:hover{
+    letter-spacing: 5px;
+}
 button:hover{
     color:var(--text-color);
     border:3px solid var(--main-dark-color);
     background:transparent;
-    letter-spacing: 5px;
 }
+/* end inputs styling */
+/* start search styling */
+.searchBlock{
+    margin-top: 20px;
+}
+.searchBtn{
+    display:flex;
+    justify-content: space-evenly;
+}
+.searchBtn button{
+    width:45%;
+}
+/* end search styling */
+/* start outputs styling */
+table{
+    width: 100%;
+    text-align: center;
+    margin:40px 0;
+}
+table th{
+    text-transform: uppercase;
+}
+th,td{
+    padding: 5px;
+    
+}
+/* end outputs styling */
