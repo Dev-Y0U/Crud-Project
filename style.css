@@ -59,7 +59,7 @@ input{
     text-align:center;
     background:var(--inputs-dark-color) ;
     color:var(--text-color);
-    caret-color:var(--main-dark-color);
+    caret-color:white;
     transition: .3s ease-in-out;
 }
 input:focus{
