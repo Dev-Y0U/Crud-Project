@@ -22,8 +22,31 @@ function getTotal(){
         total.innerHTML=0;
     }
 }
+
 // creat product
+let productsArr;
+if(localStorage.product!=null){
+    productsArr =JSON.parse(localStorage.product);
+}else{
+    productsArr =[];
+}
+
 // save localStorage 
+submit.onclick = function (){
+    let newProduct={
+        title:title.value,
+        price:price.value,
+        taxes:taxes.value,
+        ads:ads.value,
+        discount:discount.value,
+        total:total.innerHTML,
+        count:count.value,
+        category:category.value,
+    };
+    productsArr.push(newProduct);
+    console.log(productsArr);
+    localStorage.setItem("product", JSON.stringify(productsArr));
+}
 // clear inputs
 // read
 // count of products
