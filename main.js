@@ -46,8 +46,20 @@ submit.onclick = function (){
     productsArr.push(newProduct);
     console.log(productsArr);
     localStorage.setItem("product", JSON.stringify(productsArr));
+
+    clearData();
 }
 // clear inputs
+function clearData(){
+    title.value = "";
+    price.value = "";
+    taxes.value = "";
+    ads.value = "";
+    discount.value = "";
+    total.innerHTML = "";
+    count.value = "";
+    category.value = "";
+}
 // read
 // count of products
 // delete
