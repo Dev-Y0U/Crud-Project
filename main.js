@@ -74,8 +74,8 @@ function showData() {
                     <td>${productsArr[i].total }</td>
                     <td>${productsArr[i].count}</td>
                     <td>${productsArr[i].category}</td>
-                    <td><button id="update">update</button></td>
-                    <td><button id="delete">delete</button></td>
+                    <td><button  id="update">update</button></td>
+                    <td><button onclick="deleteData(${i})" id="delete">delete</button></td>
                 </tr>`
     }
     document.getElementById("tbody").innerHTML = table;
@@ -83,6 +83,11 @@ function showData() {
 showData();
 // count of products
 // delete
+function deleteData(i){
+    productsArr.splice(i,1);
+    localStorage.product = JSON.stringify(productsArr);
+    showData();
+}
 // update
 // search
 // clean input data
