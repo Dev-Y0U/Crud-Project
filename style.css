@@ -119,6 +119,14 @@ button:hover{
     width:45%;
 }
 /* end search styling */
+
+/* delete all button */
+#deleteAll{
+    margin:20px auto;
+    width:70%;
+
+}
+
 /* start outputs styling */
 table{
     width: 100%;

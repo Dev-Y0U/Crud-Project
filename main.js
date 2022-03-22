@@ -79,6 +79,14 @@ function showData() {
                 </tr>`
     }
     document.getElementById("tbody").innerHTML = table;
+    let btnDelete =document.getElementById("deleteAll")
+    if(productsArr.length > 0){
+        btnDelete.innerHTML=`
+        <button onclick="deleteAll()">Delete All</button>
+        `;
+    }else{
+        btnDelete.innerHTML="";
+    }
 }
 showData();
 // count of products
@@ -86,6 +94,11 @@ showData();
 function deleteData(i){
     productsArr.splice(i,1);
     localStorage.product = JSON.stringify(productsArr);
+    showData();
+}
+function deleteAll(){
+    productsArr=[];
+    localStorage.clear();
     showData();
 }
 // update
