@@ -9,7 +9,9 @@ let category = document.getElementById("category");
 let submit = document.getElementById("submit");
 
 // get total 
+onload=getTotal();
 function getTotal(){
+    total.innerHTML=0;
     if(price.value !=""){
         let result =+price.value + +taxes.value + +ads.value ;
         if(+discount.value >=0){
@@ -19,10 +21,8 @@ function getTotal(){
         total.style.background ="var(--main-dark-color)";
     }else{
         total.style.background ="var(--inputs-dark-color)";
-        total.innerHTML=0;
     }
 }
-
 // creat product
 let productsArr;
 if(localStorage.product!=null){
@@ -44,10 +44,10 @@ submit.onclick = function (){
         category:category.value,
     };
     productsArr.push(newProduct);
-    console.log(productsArr);
     localStorage.setItem("product", JSON.stringify(productsArr));
 
     clearData();
+    showData();
 }
 // clear inputs
 function clearData(){
@@ -61,6 +61,26 @@ function clearData(){
     category.value = "";
 }
 // read
+function showData() {
+    let table ="";
+    for(let i = 0; i < productsArr.length; i++){
+        table +=`<tr>
+                    <td>${i}</td>
+                    <td>${productsArr[i].title}</td>
+                    <td>${productsArr[i].price}</td>
+                    <td>${productsArr[i].taxes}</td>
+                    <td>${productsArr[i].ads}</td>
+                    <td>${productsArr[i].discount}</td>
+                    <td>${productsArr[i].total }</td>
+                    <td>${productsArr[i].count}</td>
+                    <td>${productsArr[i].category}</td>
+                    <td><button id="update">update</button></td>
+                    <td><button id="delete">delete</button></td>
+                </tr>`
+    }
+    document.getElementById("tbody").innerHTML = table;
+}
+showData();
 // count of products
 // delete
 // update

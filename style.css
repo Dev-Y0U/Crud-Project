@@ -96,6 +96,11 @@ button{
 .inputs button:hover{
     letter-spacing: 5px;
 }
+#delete{
+    color:var(--text-color);
+    border:3px solid hsl(261, 48%, 32%);
+    background:transparent;
+}
 button:hover{
     color:var(--text-color);
     border:3px solid var(--main-dark-color);
