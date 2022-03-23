@@ -43,7 +43,15 @@ submit.onclick = function (){
         count:count.value,
         category:category.value,
     };
-    productsArr.push(newProduct);
+    // count of products
+    if(newProduct.count > 1){
+        for(let i=0;i< newProduct.count;i++){
+            productsArr.push(newProduct);            
+        }
+    }else{
+        productsArr.push(newProduct); 
+    }
+
     localStorage.setItem("product", JSON.stringify(productsArr));
 
     clearData();
@@ -72,7 +80,6 @@ function showData() {
                     <td>${productsArr[i].ads}</td>
                     <td>${productsArr[i].discount}</td>
                     <td>${productsArr[i].total }</td>
-                    <td>${productsArr[i].count}</td>
                     <td>${productsArr[i].category}</td>
                     <td><button  id="update">update</button></td>
                     <td><button onclick="deleteData(${i})" id="delete">delete</button></td>
@@ -82,14 +89,14 @@ function showData() {
     let btnDelete =document.getElementById("deleteAll")
     if(productsArr.length > 0){
         btnDelete.innerHTML=`
-        <button onclick="deleteAll()">Delete All</button>
+        <button onclick="deleteAll()">Delete All (${productsArr.length})</button>
         `;
     }else{
         btnDelete.innerHTML="";
     }
 }
 showData();
-// count of products
+
 // delete
 function deleteData(i){
     productsArr.splice(i,1);
