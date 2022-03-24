@@ -8,6 +8,8 @@ let count = document.getElementById("count");
 let category = document.getElementById("category");
 let submit = document.getElementById("submit");
 
+let mode="create";
+let temp;
 // get total 
 onload=getTotal();
 function getTotal(){
@@ -44,12 +46,20 @@ submit.onclick = function (){
         category:category.value,
     };
     // count of products
-    if(newProduct.count > 1){
-        for(let i=0;i< newProduct.count;i++){
-            productsArr.push(newProduct);            
+    if (mode ==="create"){
+        if(newProduct.count > 1){
+            for(let i=0;i< newProduct.count;i++){
+                productsArr.push(newProduct);            
+            }
+        }else{
+            productsArr.push(newProduct); 
         }
     }else{
-        productsArr.push(newProduct); 
+        productsArr[temp]=newProduct;
+        mode="create";
+        submit.innerHTML="create";
+        count.style.display="inline-block";
+        category.style.width="49%";
     }
 
     localStorage.setItem("product", JSON.stringify(productsArr));
@@ -81,7 +91,7 @@ function showData() {
                     <td>${productsArr[i].discount}</td>
                     <td>${productsArr[i].total }</td>
                     <td>${productsArr[i].category}</td>
-                    <td><button  id="update">update</button></td>
+                    <td><button onclick="updateData(${i})" id="update">update</button></td>
                     <td><button onclick="deleteData(${i})" id="delete">delete</button></td>
                 </tr>`
     }
@@ -94,8 +104,9 @@ function showData() {
     }else{
         btnDelete.innerHTML="";
     }
+    getTotal();
 }
-showData();
+showData(); 
 
 // delete
 function deleteData(i){
@@ -109,5 +120,23 @@ function deleteAll(){
     showData();
 }
 // update
+function updateData(i){
+    title.value = productsArr[i].title;
+    price.value = productsArr[i].price;
+    taxes.value = productsArr[i].taxes;
+    ads.value = productsArr[i].ads;
+    discount.value = productsArr[i].discount;
+    getTotal();
+    count.style.display="none";
+    category.style.width="100%";
+    submit.innerHTML="Update";
+    category.value = productsArr[i].category;
+    mode="update"
+    temp=i;
+    scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
 // search
 // clean input data
