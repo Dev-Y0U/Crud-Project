@@ -139,4 +139,38 @@ function updateData(i){
     });
 }
 // search
+let searchMode="title" ;
+
+function getSearchMode(id){
+    let search = document.getElementById("search");
+    id =="titleSearch"?searchMode="title":searchMode="category";
+    search.focus();
+    // search.placeholder = id;
+    id == "titleSearch" 
+    ? search.placeholder = "Search By Title" 
+    :search.placeholder = "search By Category" ;
+}
+function searchData(value){
+    let table ;//the problem from the table variable return undefined in the first line
+    if(searchMode ==="title"){
+        for(let i=0 ; i<productsArr.length ;i++){
+            if(productsArr[i].title.includes(value)){
+                table += `<tr>
+                    <td>${i}</td>
+                    <td>${productsArr[i].title}</td>
+                    <td>${productsArr[i].price}</td>
+                    <td>${productsArr[i].taxes}</td>
+                    <td>${productsArr[i].ads}</td>
+                    <td>${productsArr[i].discount}</td>
+                    <td>${productsArr[i].total}</td>
+                    <td>${productsArr[i].category}</td>
+                    <td><button onclick="updateData(${i})" id="update">update</button></td>
+                    <td><button onclick="deleteData(${i})" id="delete">delete</button></td>
+                </tr>`;
+            }
+            }
+        }
+    document.getElementById("tbody").innerHTML = table;
+    }
+
 // clean input data
