@@ -36,14 +36,14 @@ if(localStorage.product!=null){
 // save localStorage 
 submit.onclick = function (){
     let newProduct={
-        title:title.value,
+        title:title.value.toLowerCase(),
         price:price.value,
         taxes:taxes.value,
         ads:ads.value,
         discount:discount.value,
         total:total.innerHTML,
         count:count.value,
-        category:category.value,
+        category:category.value.toLowerCase(),
     };
     // count of products
     if (mode ==="create"){
@@ -145,16 +145,34 @@ function getSearchMode(id){
     let search = document.getElementById("search");
     id =="titleSearch"?searchMode="title":searchMode="category";
     search.focus();
+    search.value="";
+    showData();
     // search.placeholder = id;
-    id == "titleSearch" 
-    ? search.placeholder = "Search By Title" 
-    :search.placeholder = "search By Category" ;
+    search.placeholder=`search by ${searchMode}`;
 }
 function searchData(value){
-    let table ;//the problem from the table variable return undefined in the first line
+    let table =" ";
+    value = value.toLowerCase();
     if(searchMode ==="title"){
         for(let i=0 ; i<productsArr.length ;i++){
-            if(productsArr[i].title.includes(value)){
+            if (productsArr[i].title.includes(value)){
+                table += `<tr>
+                    <td>${i}</td>
+                    <td>${productsArr[i].title}</td>
+                    <td>${productsArr[i].price}</td>
+                    <td>${productsArr[i].taxes}</td>
+                    <td>${productsArr[i].ads}</td>
+                    <td>${productsArr[i].discount}</td>
+                    <td>${productsArr[i].total}</td>
+                    <td>${productsArr[i].category}</td>
+                    <td><button onclick="updateData(${i})" id="update">update</button></td>
+                    <td><button onclick="deleteData(${i})" id="delete">delete</button></td>
+                </tr>`;
+            }
+            }
+        }else{
+            for(let i=0 ; i<productsArr.length ;i++){
+            if(productsArr[i].category.includes(value)){
                 table += `<tr>
                     <td>${i}</td>
                     <td>${productsArr[i].title}</td>
