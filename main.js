@@ -46,25 +46,27 @@ submit.onclick = function (){
         category:category.value.toLowerCase(),
     };
     // count of products
-    if (mode ==="create"){
-        if(newProduct.count > 1){
-            for(let i=0;i< newProduct.count;i++){
-                productsArr.push(newProduct);            
+    if(title.value != '' &&price.value != '' &&category.value !='' &&newProduct.count <= 100){
+        if (mode ==="create"){
+            if(newProduct.count > 1){
+                for(let i=0;i< newProduct.count;i++){
+                    productsArr.push(newProduct);            
+                }
+            }else{
+                productsArr.push(newProduct); 
             }
         }else{
-            productsArr.push(newProduct); 
+            productsArr[temp]=newProduct;
+            mode="create";
+            submit.innerHTML="create";
+            count.style.display="inline-block";
+            category.style.width="49%";
         }
-    }else{
-        productsArr[temp]=newProduct;
-        mode="create";
-        submit.innerHTML="create";
-        count.style.display="inline-block";
-        category.style.width="49%";
+        clearData();
     }
 
     localStorage.setItem("product", JSON.stringify(productsArr));
 
-    clearData();
     showData();
 }
 // clear inputs
@@ -83,7 +85,7 @@ function showData() {
     let table ="";
     for(let i = 0; i < productsArr.length; i++){
         table +=`<tr>
-                    <td>${i}</td>
+                    <td>${i+1}</td>
                     <td>${productsArr[i].title}</td>
                     <td>${productsArr[i].price}</td>
                     <td>${productsArr[i].taxes}</td>
